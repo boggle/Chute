@@ -1,7 +1,7 @@
-package de.zib.chute
+package be.bolder.chute
 
 
-import actors.remote.Node
+import _root_.scala.actors.remote.Node
 import java.util.concurrent.ConcurrentSkipListMap
 
 /***

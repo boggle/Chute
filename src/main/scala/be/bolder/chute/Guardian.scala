@@ -1,4 +1,4 @@
-package de.zib.chute
+package be.bolder.chute
 
 import _root_.scala.actors.Actor
 import _root_.scala.actors.Exit

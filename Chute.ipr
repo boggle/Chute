@@ -255,6 +255,8 @@
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/ActorKit.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/Dispatcher.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/EndpointDictionary.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/Guardian.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/scala/de/zib/chute/ActorKitSpec.scala" charset="UTF-8" />
   </component>
@@ -277,6 +279,7 @@
         <option name="myName" value="Project Default" />
         <option name="myLocal" value="false" />
         <inspection_tool class="CheckStyle-IDEA" level="WARNING" enabled="true" />
+        <inspection_tool class="File Name" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="ValidExternallyBoundObject" enabled="false" level="ERROR" enabled_by_default="false" />
       </profile>
     </profiles>
@@ -476,7 +479,9 @@
         <w>Endp</w>
         <w>Endpointhandler</w>
         <w>Endpointhandlers</w>
+        <w>Iterable</w>
         <w>Mixin</w>
+        <w>Multi</w>
         <w>Plantikow</w>
         <w>Repo</w>
         <w>addr</w>
@@ -487,9 +492,12 @@
         <w>hamcrest</w>
         <w>hostname</w>
         <w>isnt</w>
+        <w>iter</w>
+        <w>iters</w>
         <w>jmock</w>
         <w>junit</w>
         <w>mockito</w>
+        <w>multikeys</w>
         <w>objenesis</w>
         <w>pred</w>
         <w>scala</w>
@@ -497,6 +505,7 @@
         <w>scalatest</w>
         <w>shiftwidth</w>
         <w>tabstop</w>
+        <w>wether</w>
       </words>
     </dictionary>
   </component>

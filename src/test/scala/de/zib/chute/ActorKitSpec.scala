@@ -3,7 +3,7 @@ package de.zib.chute
 
 import _root_.scala.actors.Actor
 import _root_.scala.compat.Platform
-
+import be.bolder.chute.{ActorKit, Spec}
 
 /**
  * Testing the ActorKit

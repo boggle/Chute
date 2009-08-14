@@ -1,4 +1,4 @@
-package de.zib.chute
+package be.bolder.chute
 
 
 import compat.Platform

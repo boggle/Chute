@@ -1,7 +1,10 @@
-package be.bolder.dispatch
+package be.bolder.chute.dispatch
 
 /**
  * Class describing keys and key ranges
+ *
+ * @author Stefan Plantikow
+ *
  */
 sealed abstract class KeySpec[K]
 
@@ -26,61 +29,26 @@ extends KeySpec[K] {
 
 /**
  * Trait for dispatchers that support looking up matching actions via key ranges
+ *
+ * @author Stefan Plantikow
+ *
  */
-trait MultiKeyDispatcher[K, A] {
+trait AbstractMultiKeyDispatcher[-E, K, A] extends AbstractDispatcher[E, K, A] {
+
   /***
-   * @return All actions matching according to KeySpec spec
+   * @see collectKeySpec
+   *
+   * Sink for collecting all actions matching according to some KeySpecs
    */
-  protected def actionsBySpec(spec: KeySpec[K]): Iterator[A]
-}
-
-/**
- * Default implementation of MultiKeyDispatchers for AbstractDispatchers
- */
-trait AbstractMultiKeyDispatcher[-E, K, A] extends AbstractDispatcher[E, K, A]
-  with MultiKeyDispatcher[K, A] {
-
-  /**
-   * @return matching actions for given event, computed using eventSpec and actionsBySpec
-   */
-  protected def actionsViaSpecs(evt: E): Iterator[A] = {
-    val allSpecs = eventSpecs(evt)
-    if (allSpecs == null) null
-    else AbstractDispatcher.nullFlatten(allSpecs.map { spec => actionsBySpec(spec) })
+  protected val specSink: Sink[KeySpec[K]] = new Sink[KeySpec[K]] {
+    override def drop(evt: E, spec: KeySpec[K])(implicit actionSink: Sink[A]) =
+      collectKeySpec(evt, spec)
   }
 
   /**
-   * @return KeySpec iterator for all matching keys of Event evt
-   */
-  protected def eventSpecs(evt: E): Iterator[KeySpec[K]] = Iterator.single(KeyIterator(eventKeys(evt)))
-
-  /**
-   * @return Actions for given spec
-   */
-  protected def actionsBySpec(spec: KeySpec[K]): Iterator[A]
-
-
-  /**
-   * Convert KeySpec to key iterable
+   * Override in subclass
    *
-   * @return key iterable
+   * Collect all actions for given key into actionSink
    */
-  protected def spec2iterable(spec: KeySpec[K]): Iterable[K] = new Iterable[K] {
-    def elements: Iterator[K] = spec2iter(spec)
-  }
-
-  /**
-   * Convert KeySpec to key iterator
-   *
-   * @return key iterator
-   */
-  protected def spec2iter(spec: KeySpec[K]): Iterator[K];
+  protected def collectKeySpec(evt: E, spec: KeySpec[K])(implicit actionSink: Sink[A])
 }
-
-/**
- * Trait for AbstractMultiKeyDispatchers that chose to use eventSpecs instead of eventKeys
- */
-trait SpecDispatcher[-E, K, A] extends AbstractMultiKeyDispatcher[E, K, A] {
-  override def actions(evt: E): Iterator[A] = actionsViaSpecs(evt)
-}
-

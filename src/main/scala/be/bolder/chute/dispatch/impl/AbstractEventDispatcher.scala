@@ -1,9 +1,8 @@
-package be.bolder.dispatch.impl
+package be.bolder.chute.dispatch.impl
 
-import be.bolder.dispatch._
 import java.util.Comparator
 import java.util.concurrent.ConcurrentNavigableMap
-import be.bolder.chute.dispatch.impl.AbstractConcurrentMultiKeyDispatcher
+import be.bolder.chute.dispatch.DataFunDispatcher
 
 abstract class AbstractEventDispatcher[-E, K, D](val comparator: Comparator[K])
         extends AbstractConcurrentMultiKeyDispatcher[E, K, D => Unit]
@@ -17,5 +16,4 @@ abstract class AbstractEventDispatcher[-E, K, D](val comparator: Comparator[K])
   else
       new java.util.concurrent.ConcurrentSkipListMap[K, Set[D => Unit]](comparator)
 
-  protected def actionSet(key: K, iter: Iterator[(D) => Unit]) = emptyActionSet(key) ++ iter
 }

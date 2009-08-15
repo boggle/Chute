@@ -254,10 +254,6 @@
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/ActorKit.scala" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/Dispatcher.scala" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/EndpointDictionary.scala" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/scala/de/zib/chute/Guardian.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/scala/de/zib/chute/ActorKitSpec.scala" charset="UTF-8" />
   </component>
   <component name="FacetAutodetectingManager">
@@ -499,6 +495,7 @@
         <w>mockito</w>
         <w>multikeys</w>
         <w>objenesis</w>
+        <w>overridable</w>
         <w>pred</w>
         <w>scala</w>
         <w>scalacheck</w>

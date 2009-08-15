@@ -1,14 +1,28 @@
 package be.bolder.chute.dispatch.impl
 
-import be.bolder.dispatch._
+import be.bolder.chute.dispatch._
 import java.util.concurrent.ConcurrentNavigableMap
-import collection.immutable.{TreeSet, ListSet}
+import collection.immutable.ListSet
 
 /**
  * Dispatcher implementation based on ConcurrentNavigableMap and immutable sets
+ * (currently ListSets but this can be overridden easily, see emptyActionSet)
+ *
+ * @author Stefan Plantikow
+ *
  */
 abstract class AbstractConcurrentDispatcher[-E, K, A] extends AbstractDispatcher[E, K, A] {
   val map: ConcurrentNavigableMap[K, Set[A]]
+
+  /**
+   * KeySink for dispatching via keys
+   */
+  override protected val keySink = new Sink[K] {
+    override def drop(evt: E, key: K)(implicit actionSink: Sink[A]) = {
+      val set = actionSet(key)
+      if (! set.isEmpty) actionSink.dropIterable(evt, set)
+    }
+  }
 
   /**
    * Create empty set for holding actions
@@ -17,8 +31,14 @@ abstract class AbstractConcurrentDispatcher[-E, K, A] extends AbstractDispatcher
    */
   protected def emptyActionSet(key: K): Set[A] = ListSet.empty
 
-  protected def actionSet(key: K, iter: Iterator[A]): Set[A]
+  /**
+   * Create an action set for key populated from iter
+   */
+  protected def actionSet(key: K, iter: Iterator[A]) = emptyActionSet(key) ++ iter
 
+  /**
+   * @return current actionSet for given key
+   */
   protected def actionSet(key: K): Set[A] = {
      val actions = map.get(key)
      if (actions == null) {
@@ -28,8 +48,6 @@ abstract class AbstractConcurrentDispatcher[-E, K, A] extends AbstractDispatcher
      }
      else actions
    }
-
-  override protected def actionsByKey(key: K): Iterator[A] = actionSet(key).elements
 
   override def +=(key: K, action: A) = {
     var oldValue: Set[A] = null;
@@ -119,45 +137,36 @@ abstract class AbstractConcurrentDispatcher[-E, K, A] extends AbstractDispatcher
 }
 
 /**
- * ConcurrentDispatcher nearly-ready for use with multikeys.
+ * ConcurrentDispatcher ready for use with multikeys.
  *
- * Concrete subclasses need to decide wether they want to either override eventKeys or
- * override eventSpecs and inherit from SpecDispatcher to use specs
- *
- * In any case, incoming events get compiled down to an action iterator which is then sequentially
- * processed to dispatch the event.
- *
- * However a smarter implementation in a subclass that e.g. directly works on Iterator[KeySpec], 
- * forking an actor per spec, is left possible.
+ * @author Stefan Plantikow
+ * 
  */
 abstract class AbstractConcurrentMultiKeyDispatcher[-E, K, A]
         extends AbstractConcurrentDispatcher[E, K, A]
                 with AbstractMultiKeyDispatcher[E, K, A] {
 
-  protected def actionsBySpec(spec: KeySpec[K]): Iterator[A] =
-    AbstractDispatcher.nullFlatten(spec2iter(spec).map { key => actionsByKey(key) })
+  override protected val specSink = new Sink[KeySpec[K]] {
+    override def drop(evt: E, spec: KeySpec[K])(implicit actionSink: Sink[A]) = spec match {
+      case null => ()
 
-  override protected def eventKeys(evt: E): Iterator[K] =
-    AbstractDispatcher.nullFlatten(eventSpecs(evt).map { spec => spec2iter(spec) })
+      case Key(key: K) => keySink.drop(evt, key)(actionSink)
 
+      case KeyIterator(iter: Iterator[K]) => keySink.dropIterator(evt, iter)(actionSink)
 
-  protected def spec2iter(spec: KeySpec[K]): Iterator[K] = spec match {
-    case null => Iterator.empty
-    
-    case Key(key: K) => Iterator.single(key)
+      case KeyIterable(iterable: Iterable[K]) => keySink.dropIterable(evt, iterable)(actionSink)
 
-    case KeyIterator(iter: Iterator[K]) => iter
+      case HeadKeys(toKey: K, inclusive: Boolean) =>
+        keySink.dropIterator(evt, AbstractDispatcher.javaIter2iter(
+          map.headMap(toKey, inclusive).keySet.iterator))(actionSink)
 
-    case KeyIterable(iterable: Iterable[K]) => iterable.elements
+      case TailKeys(fromKey: K, inclusive: Boolean) =>
+        keySink.dropIterator(evt, AbstractDispatcher.javaIter2iter(
+          map.tailMap(fromKey, inclusive).keySet.iterator))(actionSink)
 
-    case HeadKeys(toKey: K, inclusive: Boolean) =>
-      AbstractDispatcher.javaIter2iter(map.headMap(toKey, inclusive).keySet.iterator)
-
-    case TailKeys(fromKey: K, inclusive: Boolean) =>
-      AbstractDispatcher.javaIter2iter(map.tailMap(fromKey, inclusive).keySet.iterator)
-
-    case RangeKeys(fromKey: K, fromInclusive: Boolean, toKey: K, toInclusive: Boolean) =>
-      AbstractDispatcher.javaIter2iter(
-        map.subMap(fromKey, fromInclusive, toKey, toInclusive).keySet.iterator)
+      case RangeKeys(fromKey: K, fromInclusive: Boolean, toKey: K, toInclusive: Boolean) =>
+        keySink.dropIterator(evt, AbstractDispatcher.javaIter2iter(
+          map.subMap(fromKey, fromInclusive, toKey, toInclusive).keySet.iterator))(actionSink)
+    }
   }
 }

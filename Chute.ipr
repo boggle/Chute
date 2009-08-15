@@ -502,6 +502,7 @@
         <w>scalatest</w>
         <w>shiftwidth</w>
         <w>tabstop</w>
+        <w>threadsafe</w>
         <w>wether</w>
       </words>
     </dictionary>
@@ -537,7 +538,7 @@
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="" />
+    <mapping directory="" vcs="Git" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

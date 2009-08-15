@@ -4,44 +4,68 @@ package be.bolder.chute.dispatch
  * Generic dispatcher interface for events of type E.
  *
  * Events are submitted by calling apply.  This maps the event to some keys of type K.
- * Each such key is resolved to some actions of type A which eventually will be run
+ * Each such key is resolved to some subscribed actions of type A which eventually will be run
  * by calling execute.
  *
  * @author Stefan Plantikow
  *
  */
-trait Dispatcher[-E, -K, A] extends (E => Unit) {
+trait Dispatcher[-E, -K, -A] extends (E => Unit) {
+
   /**
-   *  All action objects for given event
+   * Apply is the major method of a dispatcher
+   *
+   * Called with event evt, all actions subscribed to this event are executed
+   *
+   * In threadsafe implementations, execution may be asynchronously
+   *
    */
-  protected def actions(evt: E): Iterator[A]
+  def apply(evt: E): Unit
 
   // Subscription related methods
-  
+
+  /**
+   * Add action as subscriptions for given key
+   *
+   * In threadsafe implementations, guaranteed to be executed atomically, synchronized and fair
+   *
+   */
   def +=(key: K, action: A): Unit
 
   def +=(key: K, actions: Iterator[A]): Unit = for (action <- actions) +=(key, action)
   def +=(key: K, actions: Iterable[A]): Unit = +=(key, actions.elements)
 
+  /**
+   * Remove action as subscriptions for given key
+   *
+   * In threadsafe implementations, guaranteed to be executed atomically, synchronized and fair
+   *
+   */
   def -=(key: K, action: A): Unit
 
   def -=(key: K, actions: Iterator[A]): Unit = for (action <- actions) -=(key, action)
   def -=(key: K, actions: Iterable[A]): Unit = -=(key, actions.elements)
 
-  def -=(key: K): Unit
+  // protected by default since these interfere with subscriptions seemingly not available
+  // to the caller
 
-  def :=(key: K, actions: Iterator[A]): Unit = { -=(key); +=(key, actions) }
-  final def :=(key: K, actions: Iterable[A]): Unit = :=(key, actions.elements)
+  /**
+   * Remove all subscriptions for given key
+   */
+  protected def -=(key: K): Unit
+
+  protected def :=(key: K, actions: Iterator[A]): Unit = { -=(key); +=(key, actions) }
+  protected def :=(key: K, actions: Iterable[A]): Unit = :=(key, actions.elements)
 }
 
 /**
- * Abstract skeleton implementation of Dispatcher
+ *   Abstract skeleton implementation of Dispatcher  
  *
  * @author Stefan Plantikow
  *
  * @see Dispatcher
  */
-trait AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
+abstract class AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
 
   /**
    * Sink for instances of some type T in the context of handling of events of type E
@@ -72,6 +96,16 @@ trait AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
     }
   }
 
+  /**
+   * May be implemented by implementation data structures to fully utilize
+   * the sink interface for collecting results
+   */
+  trait Source[+T] { def collect(evt: E, targetSink: Sink[T]) }
+
+  /**
+   * Silently collects everything that is dropped into this sink into a list which may
+   * be queried via elements
+   */
   class CollectorSink[T] extends Sink[T] {
     var list = List[T]()
 
@@ -82,6 +116,8 @@ trait AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
   }
 
   class ActionCollector extends CollectorSink[A] ;
+
+
 
   /**
    * Signal event evt to all subscribers
@@ -95,7 +131,7 @@ trait AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
   /**
    *  All action objects for given key
    */
-  override protected def actions(evt: E): Iterator[A] = {
+  protected def actions(evt: E): Iterator[A] = {
     val sink = new ActionCollector
     collect(evt)(sink)
     sink.elements
@@ -122,7 +158,7 @@ trait AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
    *
    * @return Sink for triggering actions for an event by key
    */
-  protected def keySink: Sink[K] = null
+  protected val keySink: Sink[K] = null
 }
 
 object AbstractDispatcher {

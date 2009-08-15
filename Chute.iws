@@ -15,9 +15,14 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="9634db11-8df4-45fa-a141-924cc79f4cd3" name="Default" comment="" />
-    <ignored path=".idea/workspace.xml" />
+    <list default="true" readonly="true" id="9634db11-8df4-45fa-a141-924cc79f4cd3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Chute.ipr" afterPath="$PROJECT_DIR$/Chute.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/multikey.scala" afterPath="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/multikey.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/dispatching.scala" afterPath="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/dispatching.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Chute.iws" afterPath="$PROJECT_DIR$/Chute.iws" />
+    </list>
     <ignored path="Chute.iws" />
+    <ignored path=".idea/workspace.xml" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="Commander">
@@ -103,7 +108,16 @@
       <file leaf-file-name="dispatching.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/dispatching.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="2" selection-start="2522" selection-end="2522" vertical-scroll-proportion="0.5642136">
+            <state line="102" column="61" selection-start="3197" selection-end="3197" vertical-scroll-proportion="0.58962965">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractEventDispatcher.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractEventDispatcher.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,7 +126,7 @@
       <file leaf-file-name="multikey.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/multikey.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
+            <state line="45" column="0" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -122,9 +136,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractStaticDispatcher.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state line="10" column="15" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1250345440000" expanded="true" signature="39:89" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,7 +153,7 @@
       <file leaf-file-name="concurrent.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/concurrent.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="51" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
+            <state line="148" column="25" selection-start="4124" selection-end="4124" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -168,10 +180,10 @@
         <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/sink.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/DataFunDispatcher.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractEventDispatcher.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/concurrent.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/multikey.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractStaticDispatcher.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractMapSetDispatcher.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/multikey.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/concurrent.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/dispatching.scala" />
       </list>
     </option>
@@ -227,11 +239,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,148 +252,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dispatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Chute" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -595,7 +467,7 @@
       <list>
         <task id="Default" summary="Default task">
           <option name="active" value="true" />
-          <option name="updated" value="1250330080172" />
+          <option name="updated" value="1250376270963" />
         </task>
       </list>
     </option>
@@ -706,13 +578,6 @@
         <state line="37" column="26" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractEventDispatcher.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/de/zib/chute/Spec.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="26" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" />
@@ -725,44 +590,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/DataFunDispatcher.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="587" selection-end="587" vertical-scroll-proportion="0.0">
+        <state line="20" column="0" selection-start="587" selection-end="587" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractStaticDispatcher.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="15" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/project/boot/scala-2.7.5/lib/scala-library.jar!/scala/Iterable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractMapSetDispatcher.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="15" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/multikey.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="30" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
+        <state line="45" column="0" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/concurrent.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="51" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
+        <state line="148" column="25" selection-start="4124" selection-end="4124" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractStaticDispatcher.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractEventDispatcher.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="15" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1250345440000" expanded="true" signature="39:89" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/impl/AbstractMapSetDispatcher.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="15" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/be/bolder/chute/dispatch/dispatching.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="2" selection-start="2522" selection-end="2522" vertical-scroll-proportion="0.5642136">
+        <state line="102" column="61" selection-start="3197" selection-end="3197" vertical-scroll-proportion="0.58962965">
           <folding />
         </state>
       </provider>

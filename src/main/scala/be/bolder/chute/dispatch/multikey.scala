@@ -35,6 +35,9 @@ extends KeySpec[K] {
  */
 trait AbstractMultiKeyDispatcher[-E, K, A] extends AbstractDispatcher[E, K, A] {
 
+  // def +=(spec: KeySpec[K], action: A) = collectKeySpec(null, spec)(subscribeSink)
+  // def -=(spec: KeySpec[K], action: A) = collectKeySpec(null, spec)(unsubscribeSink)
+  
   /***
    * @see collectKeySpec
    *

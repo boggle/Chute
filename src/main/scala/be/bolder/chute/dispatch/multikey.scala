@@ -28,16 +28,14 @@ extends KeySpec[K] {
 }
 
 /**
- * Trait for dispatchers that support looking up matching actions via key ranges
+ * Trait for dispatchers that support *looking*up* matching actions via key ranges
+ * (subscription is still key-based only)
  *
  * @author Stefan Plantikow
  *
  */
 trait AbstractMultiKeyDispatcher[-E, K, A] extends AbstractDispatcher[E, K, A] {
 
-  // def +=(spec: KeySpec[K], action: A) = collectKeySpec(null, spec)(subscribeSink)
-  // def -=(spec: KeySpec[K], action: A) = collectKeySpec(null, spec)(unsubscribeSink)
-  
   /***
    * @see collectKeySpec
    *

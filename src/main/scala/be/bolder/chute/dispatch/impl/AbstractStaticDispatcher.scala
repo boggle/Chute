@@ -8,7 +8,7 @@ import be.bolder.chute.dispatch.AbstractDispatcher
  * @author Stefan Plantikow
  *
  */
-abstract class StaticDispatcher[-E, K, A](val map: PartialFunction[K, Iterator[A]])
+abstract class StaticDispatcher[-E, -K, A](val map: PartialFunction[K, Iterator[A]])
         extends AbstractDispatcher[E, K, A] {
 
   override protected val keySink = new Sink[K] {

@@ -10,7 +10,7 @@ package be.bolder.chute.dispatch
  * @author Stefan Plantikow
  *
  */
-trait Dispatcher[-E, K, A] extends (E => Unit) {
+trait Dispatcher[-E, -K, A] extends (E => Unit) {
   /**
    *  All action objects for given event
    */
@@ -41,7 +41,7 @@ trait Dispatcher[-E, K, A] extends (E => Unit) {
  *
  * @see Dispatcher
  */
-trait AbstractDispatcher[-E, K, A] extends Dispatcher[E, K, A] {
+trait AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
 
   /**
    * Sink for instances of some type T in the context of handling of events of type E
@@ -81,7 +81,7 @@ trait AbstractDispatcher[-E, K, A] extends Dispatcher[E, K, A] {
     def elements = list.elements
   }
 
-  final class ActionCollector extends CollectorSink[A] ;
+  class ActionCollector extends CollectorSink[A] ;
 
   /**
    * Signal event evt to all subscribers

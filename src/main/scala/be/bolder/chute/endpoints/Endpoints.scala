@@ -1,9 +1,10 @@
-package be.bolder.chute
+package be.bolder.chute.endpoints
 
 import _root_.scala.actors.Actor.loop
 import _root_.scala.actors.Actor
 import _root_.scala.actors.Exit
 import _root_.scala.actors.remote.Node
+import be.bolder.chute.kit.ActorKit
 
 object Endpoints {
   /**

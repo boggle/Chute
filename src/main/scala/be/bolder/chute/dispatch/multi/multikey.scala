@@ -1,4 +1,4 @@
-package be.bolder.chute.dispatch
+package be.bolder.chute.dispatch.multi
 
 /**
  * Class describing keys and key ranges

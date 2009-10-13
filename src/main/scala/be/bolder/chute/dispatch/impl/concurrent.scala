@@ -3,6 +3,7 @@ package be.bolder.chute.dispatch.impl
 import be.bolder.chute.dispatch._
 import java.util.concurrent.ConcurrentNavigableMap
 import collection.immutable.ListSet
+import multi._
 
 /**
  * Dispatcher implementation based on ConcurrentNavigableMap and immutable sets

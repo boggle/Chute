@@ -1,8 +1,9 @@
-package be.bolder.chute
+package be.bolder.chute.endpoints
 
 
 import _root_.scala.actors.remote.Node
 import java.util.concurrent.ConcurrentSkipListMap
+import _root_.be.bolder.chute.NodeComparator
 
 /***
  * Concurrent, shared-memory dictionary from Nodes to Endpoints of type E

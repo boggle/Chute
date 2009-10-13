@@ -4,7 +4,7 @@ package be.bolder.chute.dispatch
  * Generic dispatcher interface for events of type E.
  *
  * Events are submitted by calling apply.  This maps the event to some keys of type K.
- * Each such key is resolved to some subscribed actions of type A which eventually will be run
+ * Each such key is resolved to some subscribed actions of type A which eventually will be run
  * by calling execute.
  *
  * @author Stefan Plantikow
@@ -15,9 +15,10 @@ trait Dispatcher[-E, -K, -A] extends (E => Unit) {
   /**
    * Apply is the major method of a dispatcher
    *
-   * Called with event evt, all actions subscribed to this event are executed
+   * Called with event evt, all actions subscribed to this event are executed.
+   * The semantics of action execution are specified by subclasses.
    *
-   * In threadsafe implementations, execution may be asynchronously
+   * In thread-aware implementations, execution may be asynchronously
    *
    */
   def apply(evt: E): Unit
@@ -39,27 +40,36 @@ trait Dispatcher[-E, -K, -A] extends (E => Unit) {
    * Remove action as subscriptions for given key
    *
    * In threadsafe implementations, guaranteed to be executed atomically, synchronized and fair
-   *
    */
   def -=(key: K, action: A): Unit
 
   def -=(key: K, actions: Iterator[A]): Unit = for (action <- actions) -=(key, action)
   def -=(key: K, actions: Iterable[A]): Unit = -=(key, actions.elements)
 
-  // protected by default since these interfere with subscriptions seemingly not available
-  // to the caller
+  // protected by default since these methods interfere with subscriptions which
+  // seemingly are not related to the caller
+  //
+  // (they may ex- or implicitly unsubscribe actions for which the caller hasnt proven
+  // ownership by presenting a reference)
 
   /**
    * Remove all subscriptions for given key
    */
   protected def -=(key: K): Unit
 
+  /**
+   * Replace all subscriptions for given key
+   */
   protected def :=(key: K, actions: Iterator[A]): Unit = { -=(key); +=(key, actions) }
+
+  /**
+   * Replace all subscriptions for given key
+   */
   protected def :=(key: K, actions: Iterable[A]): Unit = :=(key, actions.elements)
 }
 
 /**
- *   Abstract skeleton implementation of Dispatcher  
+ * Abstract skeleton implementation of Dispatcher  
  *
  * @author Stefan Plantikow
  *
@@ -90,17 +100,11 @@ abstract class AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
       dropIterator(evt, triggers.elements)
 
     def collect(thunk: (Sink[A]) => Unit): Iterator[A] = {
-      val collector = new ActionCollector
+      val collector = new CollectorSink[A]
       thunk(collector)
       collector.elements
     }
   }
-
-  /**
-   * May be implemented by implementation data structures to fully utilize
-   * the sink interface for collecting results
-   */
-  trait Source[+T] { def collect(evt: E, targetSink: Sink[T]) }
 
   /**
    * Silently collects everything that is dropped into this sink into a list which may
@@ -115,28 +119,6 @@ abstract class AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
     def elements = list.elements
   }
 
-  class ActionCollector extends CollectorSink[A] ;
-
-
-
-  /**
-   * Signal event evt to all subscribers
-   * 
-   * Not guaranteed to be synchronous
-   *
-   * @see Dispatcher
-   */
-  def apply(evt: E): Unit = collect(evt)(executorSink(evt))
-
-  /**
-   *  All action objects for given key
-   */
-  protected def actions(evt: E): Iterator[A] = {
-    val sink = new ActionCollector
-    collect(evt)(sink)
-    sink.elements
-  }
-
   /**
    * Override in subclass
    *
@@ -145,6 +127,25 @@ abstract class AbstractDispatcher[-E, -K, A] extends Dispatcher[E, K, A] {
    * Collect all matching actions for event by dropping them in actionSink
    */
   protected def collect(evt: E)(implicit actionSink: Sink[A])
+
+
+  /**
+   *  All action objects for given key
+   */
+  protected def actions(evt: E): Iterator[A] = {
+    val sink = new CollectorSink[A]
+    collect(evt)(sink)
+    sink.elements
+  }
+
+  /**
+   * Signal event evt to all subscribers
+   *
+   * Not guaranteed to be synchronous
+   *
+   * @see Dispatcher
+   */
+  def apply(evt: E): Unit = collect(evt)(executorSink(evt))
 
   /**
    * Override in subclass

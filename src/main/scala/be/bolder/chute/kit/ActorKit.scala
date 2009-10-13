@@ -1,4 +1,4 @@
-package be.bolder.chute
+package be.bolder.chute.kit
 
 
 import _root_.scala.actors.Actor.{loop, react}

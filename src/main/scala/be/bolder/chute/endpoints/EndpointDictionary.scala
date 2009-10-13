@@ -12,6 +12,8 @@ import _root_.be.bolder.chute.NodeComparator
  *
  * Removal of unused entries is left to subclasses.
  *
+ * @deprecated Likely will be replaced with something more suitable and based on dispatch.*
+ *
  * @author Stefan Plantikow <plantikow@zib.de>
  *
  */

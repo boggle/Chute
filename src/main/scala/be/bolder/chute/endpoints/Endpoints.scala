@@ -4,8 +4,11 @@ import _root_.scala.actors.Actor.loop
 import _root_.scala.actors.Actor
 import _root_.scala.actors.Exit
 import _root_.scala.actors.remote.Node
-import be.bolder.chute.kit.ActorKit
+import _root_.be.bolder.chute.kit.ActorKit
 
+/**
+* @deprecated Likely will be replaced with something more suitable and based on dispatch.*
+*/
 object Endpoints {
   /**
    * Sent to endpoint*s* actor when a new endpoint actor is instantiated

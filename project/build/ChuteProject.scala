@@ -8,7 +8,7 @@ class ChuteProject(info: ProjectInfo) extends DefaultProject(info) {
 
   // --- Dependencies ------------------------------------------------------------------------------
 	val netty = "org.jboss.netty" % "netty" % "3.1.0.CR1"
-  val dispatchJSON = "net.databinder" %% "dispatch-json" % "0.5.1"
+  // val dispatchJSON = "net.databinder" %% "dispatch-json" % "0.5.1"
 
   // Plugin in if using java 5, may require changes to source
   // val jsr166x = "jsr166" % "jsr166" % "x" from

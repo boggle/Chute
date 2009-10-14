@@ -475,6 +475,7 @@
         <w>Endp</w>
         <w>Endpointhandler</w>
         <w>Endpointhandlers</w>
+        <w>Explicitely</w>
         <w>Iterable</w>
         <w>Mixin</w>
         <w>Multi</w>
@@ -493,6 +494,7 @@
         <w>iters</w>
         <w>jmock</w>
         <w>junit</w>
+        <w>lookup</w>
         <w>mockito</w>
         <w>multikeys</w>
         <w>objenesis</w>
@@ -551,24 +553,17 @@
     <library name="compile">
       <CLASSES>
         <root url="file://$PROJECT_DIR$/lib_managed/compile" />
+        <root url="file://$PROJECT_DIR$/lib" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
+      <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/lib_managed/compile" recursive="false" />
     </library>
     <library name="lib">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/project/boot/scala-2.7.5/lib/scala-library.jar!/" />
         <root url="jar://$PROJECT_DIR$/project/boot/scala-2.7.5/lib/scala-compiler.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="sbt-0.5.2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/project/boot/scala-2.7.5/sbt-0.5.2/ivy-2.0.0.jar!/" />
-        <root url="jar://$PROJECT_DIR$/project/boot/scala-2.7.5/sbt-0.5.2/jsch-0.1.31.jar!/" />
-        <root url="jar://$PROJECT_DIR$/project/boot/scala-2.7.5/sbt-0.5.2/sbt_2.7.5-0.5.2.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

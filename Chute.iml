@@ -18,6 +18,7 @@
     <orderEntry type="library" name="test" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="compile" level="project" />
+    <orderEntry type="library" name="sbt" level="project" />
     <javadoc-paths>
       <root url="file://$MODULE_DIR$/target/doc/main/api" />
     </javadoc-paths>
